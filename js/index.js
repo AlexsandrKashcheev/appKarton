@@ -1,7 +1,7 @@
 const title = document.querySelector('.title');
 const inputAccepted = document.getElementById('accepted');
-const inputKnot = document.getElementById('shipped');
-const inputCount = document.getElementById('BU');
+const inputShipped = document.getElementById('shipped');
+const inputBu = document.getElementById('BU');
 const btn = document.getElementById('btn');
 
 
@@ -22,8 +22,8 @@ btn.onclick = () => {
         }
         let obj = {};
         obj.accepted = Number(inputAccepted.value);
-        obj.shipped = Number(inputKnot.value);
-        obj.Bu = Number(inputCount.value);
+        obj.shipped = Number(inputShipped.value);
+        obj.Bu = Number(inputBu.value);
 
         for(let i = 0; i < data.length; i++){
             obj.accepted = Number(obj.accepted) + Number(data[i].accepted);
@@ -42,6 +42,9 @@ btn.onclick = () => {
         localStorage.setItem('key', id);
         break;
     }
+    inputAccepted.value = '';
+    inputShipped.value = '';
+    inputBu.value = '';
 
 }
 
