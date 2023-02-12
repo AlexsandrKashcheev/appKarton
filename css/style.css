@@ -59,9 +59,11 @@ html {
 }
 
 body{
+    height: 100vh;
     font-family: 'Pangolin', cursive;
     font-size: 18px;
-    background: linear-gradient(70deg, rgb(240, 31, 255), rgb(64, 2, 140));
+    background: linear-gradient(70deg, rgb(240, 31, 255), rgb(64, 2, 140)) no-repeat;
+    background-size: cover;
     color: rgb(244, 227, 204);
 }
 
