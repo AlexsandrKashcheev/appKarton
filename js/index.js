@@ -10,13 +10,13 @@ let data = [];
 let id = 0;
 
 btn.onclick = () => {
-    data = JSON.parse(localStorage.getItem('data'));
+    data = JSON.parse(localStorage.getItem('karton'));
     
     if(data === null){
         data = [];
     }
     while(true) {
-        id = localStorage.getItem('key');
+        id = localStorage.getItem('id');
         if(id === null){
             id = 0;
         }
@@ -37,14 +37,16 @@ btn.onclick = () => {
         console.log(obj);
         data[id] = obj;
 
-        localStorage.setItem('data', JSON.stringify(data));
+        localStorage.setItem('karton', JSON.stringify(data));
         id++;
-        localStorage.setItem('key', id);
+        localStorage.setItem('id', id);
         break;
     }
     inputAccepted.value = '';
     inputShipped.value = '';
     inputBu.value = '';
+
+    window.location.reload();
 
 }
 
@@ -54,7 +56,7 @@ const elemButtons = document.querySelector('.table-button');
 
 lookBtn.onclick = () => {
 
-    const res = JSON.parse(localStorage.getItem('data'));
+    const res = JSON.parse(localStorage.getItem('karton'));
     lookBtn.disabled = true;
     
     const thead = document.createElement('thead');
@@ -114,8 +116,10 @@ const clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = () => {
 
     if(confirm('Вы действительно хотите очистить таблицу?')){
-        localStorage.clear();
+        localStorage.removeItem('karton');
+        localStorage.removeItem('id');
         table.remove();
+        window.location.reload();
         alert('Таблица успешно очищена!');
     } else {
         alert('Фуух, данные спасены...');
